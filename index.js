@@ -28,6 +28,15 @@ let persons =
       }
 ]
 
+const isDuplicateName =(newName) =>{
+  console.log ('Check isDuplicate :',newName)
+  return persons.some(person => person.name === newName)
+}  
+
+const isDuplicateNumber=(newNumber) =>{
+  console.log ('Check isDuplicate :',newNumber)
+  return persons.some(person => person.number === newNumber)
+}  
 
 const generateId = () =>{
   return Math.floor((Math.random()*100) + 1)
@@ -70,6 +79,27 @@ app.post('/api/persons',(request,response) =>{
       error: 'name missing'
     })
   }
+
+  if(!body.number){
+    return response.status(400).json({
+      error: 'number missing'
+    })
+  }
+
+  if (isDuplicateName(body.name)){
+    return response.status(400).json({
+      error: 'name is not unique'
+    })
+  }
+
+  if (isDuplicateNumber(body.number)){
+    return response.status(400).json({
+      error: 'number is not unique'
+    })
+
+  }
+
+
   const person = {
     "name": body.name,
     "number": body.number,
