@@ -12,11 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-<<<<<<< HEAD
     "morgan": "^1.9.1"
-=======
     "mongoose": "^5.7.11"
->>>>>>> excercise 3.12
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
